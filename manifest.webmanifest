@@ -1,0 +1,10 @@
+{
+  "name": "Jarvis AI",
+  "short_name": "Jarvis",
+  "description": "Il tuo assistente personale.",
+  "lang": "it-IT",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#090d18",
+  "theme_color": "#090d18"
+}
