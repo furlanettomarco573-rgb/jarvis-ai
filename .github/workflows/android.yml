@@ -32,8 +32,11 @@ jobs:
 
       - name: Install Android SDK packages
         run: |
-          sdkmanager --licenses >/dev/null || true
-          sdkmanager "platforms;android-35" "build-tools;35.0.0"
+          export ANDROID_HOME="${ANDROID_HOME:-/usr/local/lib/android/sdk}"
+          sdkmanager_path="$(find "$ANDROID_HOME/cmdline-tools" -type f -name sdkmanager -print -quit)"
+          test -x "$sdkmanager_path"
+          yes | "$sdkmanager_path" --licenses >/dev/null || true
+          "$sdkmanager_path" "platforms;android-35" "build-tools;35.0.0"
         working-directory: .
 
       - name: Make Gradle wrapper executable
